@@ -10,7 +10,9 @@ import java.util.Objects;
 import java.util.Scanner;
 
 
-
+/**
+ * ClientUPD helps in sending requests to UDP server, receives responses and handle exceptions.
+ */
 public class ClientUDP {
 
   static private String key;
@@ -18,6 +20,13 @@ public class ClientUDP {
   static private String req;
   static Scanner scanner;
 
+  /**
+   * The main functions is the starting of the ClientUDP. Whenever a client uses
+   * UDP Client they are navigated through this main function
+   *
+   * @param args command-line arguments: Host Name & Port Number
+   * @throws IOException error during execution.
+   */
 
   public static void main(String[] args) throws IOException {
     if (args.length != 2 || Integer.parseInt(args[1]) > 65535) {
@@ -32,7 +41,7 @@ public class ClientUDP {
       datagramSocket.setSoTimeout(10000);
       String currentTimeDisplay = getCurrentTime();
       System.out.println(currentTimeDisplay + " Client started");
-      prePopulatedValues(servIP, serPort, datagramSocket);
+      prePopulatedData(servIP, serPort, datagramSocket);
 
       while (true) {
         printOptions();
@@ -71,7 +80,15 @@ public class ClientUDP {
     }
   }
 
-  private static void prePopulatedValues(InetAddress serverIP, int serverPort, DatagramSocket datagramSocket )
+  /**
+   * Method which helps to pre-populate few values.
+   *
+   * @param serverIP Ip address
+   * @param serverPort Port number
+   * @param datagramSocket Datagram Socket
+   * @throws IOException if error occurs while pre-populating the data
+   */
+  private static void prePopulatedData(InetAddress serverIP, int serverPort, DatagramSocket datagramSocket )
           throws IOException
     {
       System.out.println("Pre-populating with the static key-value store");
@@ -173,6 +190,12 @@ public class ClientUDP {
       }
   }
 
+  /**
+   * Method which helps to validate the input of operations given by the Client.
+   * @param operation : Operation provided by the user.
+   * @return req: Request Message
+   * @throws Exception if error occurs by Client while giving input.
+   */
   private static String validateOptions(String operation) throws IOException
   {
     if (Objects.equals(operation, "1")) {
@@ -185,12 +208,23 @@ public class ClientUDP {
     return "";
   }
 
+  /**
+   * Method creates request for a PUT Operation for further processing.
+   * @return req: Request Message
+   * @throws Exception if error occurs
+   */
   private static String putOperation() throws IOException {
     getKey();
     getValue();
     req = "PUT " + key + " , " + value;
     return req;
   }
+
+  /**
+   * Method creates request for a GET Operation for further processing.
+   * @return req: Request Message
+   * @throws Exception if error occurs
+   */
 
   private static String getOperation() throws IOException
   {
@@ -199,6 +233,11 @@ public class ClientUDP {
     return req;
   }
 
+  /**
+   * Method creates request for a DELETE Operation for further processing.
+   * @return req: Request Message
+   * @throws Exception if error occurs
+   */
   private static String deleteOperation() throws IOException
   {
     getKey();
@@ -206,6 +245,9 @@ public class ClientUDP {
     return req;
   }
 
+  /**
+   * Method to print the available operations for the Client.
+   */
   private static void printOptions()
   {
     System.out.println("Available Operations:");
@@ -215,30 +257,51 @@ public class ClientUDP {
   }
 
 
+  /**
+   * Method to get the key from the user via input.
+   *
+   * @throws IOException if an error occurs while taking input from the user.
+   */
   private static void getKey() throws IOException {
     System.out.print("Enter key: ");
     key = scanner.nextLine();
   }
 
-
+  /**
+   * Method to get the value for a particular key which is input from the user.
+   *
+   * @throws IOException if an error occurs while taking input from the user.
+   */
   private static void getValue() throws IOException {
     System.out.print("Enter Value: ");
     value = scanner.nextLine();
   }
 
-
-  private static void requestTrack(String str) {
+  /**
+   * Method to print Request messages.
+   *
+   * @param s message string
+   */
+  private static void requestTrack(String s) {
     System.out.println(getCurrentTime() +
-            " Request -> " + str);
+            " Request -> " + s);
+  }
+
+  /**
+   * Method to print Response messages.
+   *
+   * @param s message string
+   */
+  private static void responseTrack(String s) {
+    System.out.println(getCurrentTime() +
+            " Response -> " + s + "\n");
   }
 
 
-  private static void responseTrack(String str) {
-    System.out.println(getCurrentTime() +
-            " Response -> " + str + "\n");
-  }
-
-
+  /**
+   * Method to track current date and timestamp.
+   *
+   */
   private static String getCurrentTime() {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
     return "[Time: " + simpleDateFormat.format(new Date()) + "]";
