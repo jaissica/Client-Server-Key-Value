@@ -124,6 +124,101 @@ class ClientTCP {
     } else {
       responseTrack(response1);
     }
+
+    // Case1
+    req = "GET " + 1;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+    //case2
+    req = "GET " + 2;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+    //case3
+    req = "GET " + 3;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+    //case4
+    req = "GET " + 4;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+
+    //case5
+    req = "GET " + 5;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+
+
+    // Case1
+    req = "DELETE " + 1;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+    //case2
+    req = "DELETE " + 2;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+    //case3
+    req = "DELETE " + 3;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+    //case4
+    req = "DELETE " + 4;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
+
+    //case5
+    req = "DELETE " + 5;
+    sendPacket(dataOutput, req);
+    response1 = receivePacket(dataInput);
+    if (response1.startsWith("ERROR")) {
+      System.out.println("Received error response from the server: " + response1);
+    } else {
+      responseTrack(response1);
+    }
   }
 
   /**

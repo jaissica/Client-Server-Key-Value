@@ -245,6 +245,198 @@ public class ClientUDP {
     } catch (java.net.SocketTimeoutException e) {
       System.out.println("Timeout encountered! ");
     }
+
+    //Case 1
+    req = "GET " + "1";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+
+    //case2
+    req = "GET " + "2";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case3
+    req = "GET " + "3";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case4
+    req = "GET " + "4";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case5
+    req = "GET " + "5";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //Case 1
+    req = "DELETE " + "1";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+
+    //case2
+    req = "DELETE " + "2";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case3
+    req = "DELETE " + "3";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case4
+    req = "DELETE " + "4";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case5
+    req = "DELETE " + "5";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
   }
 
   /**
