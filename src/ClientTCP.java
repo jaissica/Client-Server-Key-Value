@@ -79,7 +79,7 @@ class ClientTCP {
     System.out.println("Pre-populating with the static key-value store...");
     System.out.println(" ");
     // Case1
-    req = "PUT " + 1 + " " + 2;
+    req = "PUT " + 1 + " " + 11;
     sendPacket(dataOutput, req);
     String response1 = receivePacket(dataInput);
     if (response1.startsWith("ERROR")) {
@@ -88,7 +88,7 @@ class ClientTCP {
       responseTrack(response1);
     }
     //case2
-    req = "PUT " + 3 + " " + 4;
+    req = "PUT " + 2 + " " + 22;
     sendPacket(dataOutput, req);
     response1 = receivePacket(dataInput);
     if (response1.startsWith("ERROR")) {
@@ -97,7 +97,7 @@ class ClientTCP {
       responseTrack(response1);
     }
     //case3
-    req = "PUT " + 6 + " " + 5;
+    req = "PUT " + 3 + " " + 33;
     sendPacket(dataOutput, req);
     response1 = receivePacket(dataInput);
     if (response1.startsWith("ERROR")) {
@@ -106,7 +106,7 @@ class ClientTCP {
       responseTrack(response1);
     }
     //case4
-    req = "PUT " + 7 + " " + 8;
+    req = "PUT " + 4 + " " + 44;
     sendPacket(dataOutput, req);
     response1 = receivePacket(dataInput);
     if (response1.startsWith("ERROR")) {
@@ -116,7 +116,7 @@ class ClientTCP {
     }
 
     //case5
-    req = "PUT " + 9 + " " + 10;
+    req = "PUT " + 5 + " " + 55;
     sendPacket(dataOutput, req);
     response1 = receivePacket(dataInput);
     if (response1.startsWith("ERROR")) {

@@ -80,115 +80,7 @@ public class ClientUDP {
     }
   }
 
-  /**
-   * Method which helps to pre-populate few values.
-   *
-   * @param serverIP Ip address
-   * @param serverPort Port number
-   * @param datagramSocket Datagram Socket
-   * @throws IOException if error occurs while pre-populating the data
-   */
-  private static void prePopulatedData(InetAddress serverIP, int serverPort, DatagramSocket datagramSocket )
-          throws IOException
-    {
-      System.out.println("Pre-populating with the static key-value store");
-      System.out.println(" ");
-      //Case 1
-      String req = "PUT " + "1" + " , " + "11";
-      requestTrack(req);
-      byte[] reqBuffer = req.getBytes();
-      DatagramPacket reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
-              serverIP, serverPort);
-      datagramSocket.send(reqPacket);
-      byte[] resBuffer = new byte[512];
-      DatagramPacket resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
 
-      try {
-        datagramSocket.receive(resultPacket);
-        String result = new String(resBuffer);
-        responseTrack(result);
-      } catch (java.net.SocketTimeoutException e) {
-        System.out.println("Timeout occurred. " +
-                "The server did not respond within the specified time.");
-      }
-
-
-      //case2
-      req = "PUT " + "2" + " , " + "22";
-      requestTrack(req);
-      reqBuffer = req.getBytes();
-      reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
-              serverIP, serverPort);
-      datagramSocket.send(reqPacket);
-
-      resBuffer = new byte[512];
-      resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
-
-      try {
-        datagramSocket.receive(resultPacket);
-        String result = new String(resBuffer);
-        responseTrack(result);
-      } catch (java.net.SocketTimeoutException e) {
-        System.out.println("Timeout encountered! ");
-      }
-
-      //case3
-      req = "PUT " + "3" + " , " + "33";
-      requestTrack(req);
-      reqBuffer = req.getBytes();
-      reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
-              serverIP, serverPort);
-      datagramSocket.send(reqPacket);
-
-      resBuffer = new byte[512];
-      resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
-
-      try {
-        datagramSocket.receive(resultPacket);
-        String result = new String(resBuffer);
-        responseTrack(result);
-      } catch (java.net.SocketTimeoutException e) {
-        System.out.println("Timeout encountered! ");
-      }
-
-      //case4
-      req = "PUT " + "4" + " , " + "44";
-      requestTrack(req);
-      reqBuffer = req.getBytes();
-      reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
-              serverIP, serverPort);
-      datagramSocket.send(reqPacket);
-
-      resBuffer = new byte[512];
-      resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
-
-      try {
-        datagramSocket.receive(resultPacket);
-        String result = new String(resBuffer);
-        responseTrack(result);
-      } catch (java.net.SocketTimeoutException e) {
-        System.out.println("Timeout encountered! ");
-      }
-
-      //case5
-      req = "PUT " + "5" + " , " + "55";
-      requestTrack(req);
-      reqBuffer = req.getBytes();
-      reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
-              serverIP, serverPort);
-      datagramSocket.send(reqPacket);
-
-      resBuffer = new byte[512];
-      resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
-
-      try {
-        datagramSocket.receive(resultPacket);
-        String result = new String(resBuffer);
-        responseTrack(result);
-      } catch (java.net.SocketTimeoutException e) {
-        System.out.println("Timeout encountered! ");
-      }
-  }
 
   /**
    * Method which helps to validate the input of operations given by the Client.
@@ -243,6 +135,116 @@ public class ClientUDP {
     getKey();
     req = "DELETE " + key;
     return req;
+  }
+
+  /**
+   * Method which helps to pre-populate few values.
+   *
+   * @param serverIP Ip address
+   * @param serverPort Port number
+   * @param datagramSocket Datagram Socket
+   * @throws IOException if error occurs while pre-populating the data
+   */
+  private static void prePopulatedData(InetAddress serverIP, int serverPort, DatagramSocket datagramSocket )
+          throws IOException
+  {
+    System.out.println("Pre-populating with the static key-value store");
+    System.out.println(" ");
+    //Case 1
+    String req = "PUT " + "1" + " , " + "11";
+    requestTrack(req);
+    byte[] reqBuffer = req.getBytes();
+    DatagramPacket reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+    byte[] resBuffer = new byte[512];
+    DatagramPacket resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout occurred. " +
+              "The server did not respond within the specified time.");
+    }
+
+
+    //case2
+    req = "PUT " + "2" + " , " + "22";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case3
+    req = "PUT " + "3" + " , " + "33";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case4
+    req = "PUT " + "4" + " , " + "44";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
+
+    //case5
+    req = "PUT " + "5" + " , " + "55";
+    requestTrack(req);
+    reqBuffer = req.getBytes();
+    reqPacket = new DatagramPacket(reqBuffer, reqBuffer.length,
+            serverIP, serverPort);
+    datagramSocket.send(reqPacket);
+
+    resBuffer = new byte[512];
+    resultPacket = new DatagramPacket(resBuffer, resBuffer.length);
+
+    try {
+      datagramSocket.receive(resultPacket);
+      String result = new String(resBuffer);
+      responseTrack(result);
+    } catch (java.net.SocketTimeoutException e) {
+      System.out.println("Timeout encountered! ");
+    }
   }
 
   /**
