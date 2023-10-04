@@ -12,7 +12,9 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.Scanner;
 
-
+/**
+ * ServerTCP listens to TCP connections, processes client requests and sends back responses.
+ */
 public class ServerTCP {
 
   static private InputStream read;
@@ -20,6 +22,13 @@ public class ServerTCP {
   static Properties properties;
 
 
+  /**
+   * The main function is the starting point of the ServerTCP program, whenever a
+   * TCP Server is executed this ,method is the first method to be called..
+   *
+   * @param args command-line argument
+   * @throws Exception handles error during execution
+   */
   public static void main(String[] args) throws Exception {
 
     System.out.println("Enter port Number: ");
@@ -60,33 +69,53 @@ public class ServerTCP {
   }
 
 
-  private static void requestTrack(String str, String ip, String port) {
-    System.out.println(getCurrentTime() + " Request from: " + ip + ":" + port + " -> " + str);
+  /**
+   * Method to print Request Message.
+   *
+   * @param s  message string
+   * @param ip   Client IP Address
+   * @param port Client Port Number
+   */
+  private static void requestTrack(String s, String ip, String port) {
+    System.out.println(getCurrentTime() + " Request from: " + ip + ":" + port + " -> " + s);
   }
 
 
-  private static void responseTrack(String str) {
+  /**
+   * Method to print Response Message.
+   *
+   * @param s message string
+   */
+  private static void responseTrack(String s) {
     System.out.println(getCurrentTime() + " Response:  "
-        + str + "\n");
+        + s + "\n");
   }
 
 
 
-  private static String getOperation(String[] input) throws IllegalArgumentException {
+  /**
+   * Method to validate and perform user requests.
+   *
+   * @param inputStr user request
+   * @return the PUT/GET/DELETE operation
+   * @throws IllegalArgumentException if invalid input is given
+   */
+
+  private static String getOperation(String[] inputStr) throws IllegalArgumentException {
     try {
-      if (input.length < 2) {
+      if (inputStr.length < 2) {
         throw new IllegalArgumentException("Invalid input: Insufficient arguments.");
       }
-      String operation = input[0].toUpperCase();
-      String key = input[1];
+      String operation = inputStr[0].toUpperCase();
+      String key = inputStr[1];
 
       switch (operation) {
         case "PUT": {
-          if (input.length < 3) {
+          if (inputStr.length < 3) {
             throw new IllegalArgumentException(
                 "Invalid input: Value is missing for PUT operation!");
           }
-          String value = input[2];
+          String value = inputStr[2];
           return addToKeyValue(key, value);
         }
         case "DELETE": {
@@ -106,6 +135,14 @@ public class ServerTCP {
   }
 
 
+  /**
+   * Method to add key-value pair in the properties file.
+   *
+   * @param key   the key to be added.
+   * @param value the corresponding value associated to that key.
+   * @return Success Message
+   * @throws Exception error during execution
+   */
 
   static String addToKeyValue(String key, String value) throws Exception {
     properties.setProperty(key, value);
@@ -115,6 +152,13 @@ public class ServerTCP {
   }
 
 
+  /**
+   * Method to delete a key-value pair from properties file.
+   *
+   * @param key the key to be deleted
+   * @return success or key not found message
+   * @throws IOException if an error appears
+   */
   private static String deleteFromKeyValue(String key) throws IOException {
     String result = "";
     if (properties.containsKey(key)) {
@@ -128,6 +172,13 @@ public class ServerTCP {
   }
 
 
+  /**
+   * Method to get the value associated with the provided key from the keyValues.
+   *
+   * @param key the key for which corresponding value need to be fetched.
+   * @return the value corresponding to the key or message if the key is not found
+   * @throws IOException error occur during the operation
+   */
   private static String getFromKeyValue(String key) throws IOException {
     try {
       String value = properties.getProperty(key);
@@ -140,7 +191,11 @@ public class ServerTCP {
     }
   }
 
-
+  /**
+   * Method to return current date and timestamp.
+   *
+   * @return current date and timestamp
+   */
   private static String getCurrentTime() {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
     return "<Time: " + simpleDateFormat.format(new Date()) + ">";

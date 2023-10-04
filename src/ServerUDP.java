@@ -12,13 +12,22 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.Scanner;
 
-
+/**
+ * ServerUDP listens to incoming UDP packets, process client requests and send back responses.
+ */
 public class ServerUDP {
   static private InputStream read;
   static private OutputStream write;
   static Properties properties;
 
 
+  /**
+   * The main function is the starting point of the ServerUDP program, whenever a
+   * UDP Server is executed this ,method is the first method to be called.
+   *
+   * @param args command-line argument
+   * @throws Exception handles error during execution
+   */
   public static void main(String[] args) throws Exception {
 
     System.out.print("Enter port Number: ");
@@ -84,43 +93,72 @@ public class ServerUDP {
   }
 
 
-  private static void requestTrack(String str, String ip, String port) {
-    System.out.println(getCurrentTime() + " Request from: " + ip + ":" + port  + " -> "+ str);
+  /**
+   * Method to print Request Message.
+   *
+   * @param s  message string
+   * @param ip   Client IP Address
+   * @param port Client Port Number
+   */
+  private static void requestTrack(String s, String ip, String port) {
+    System.out.println(getCurrentTime() + " Request from: " + ip + ":" + port  + " -> "+ s);
   }
 
 
-  private static void responseTrack(String str) { System.out.println(getCurrentTime() +
-      " Response -> " + str + "\n");}
+  /**
+   * Method to print Response Message.
+   *
+   * @param s message string
+   */
+  private static void responseTrack(String s) { System.out.println(getCurrentTime() +
+      " Response -> " + s + "\n");}
 
 
-  private static void errorTrack(String err) { System.out.println(getCurrentTime() +
-      " Error -> " + err);}
+  /**
+   * Method to print Response Message.
+   *
+   * @param error message string
+   */
+  private static void errorTrack(String error) { System.out.println(getCurrentTime() +
+      " Error -> " + error);}
 
 
+  /**
+   * Method to return current date and timestamp.
+   *
+   * @return current date and timestamp
+   */
   private static String getCurrentTime() {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SSS");
     return "<Time: " + simpleDateFormat.format(new Date()) + ">";
   }
 
 
-  private static String getOperation(String[] input) throws IllegalArgumentException {
+  /**
+   * Method to validate and perform user requests.
+   *
+   * @param inputStr user request
+   * @return the PUT/GET/DELETE operation
+   * @throws IllegalArgumentException if invalid input is given
+   */
+  private static String getOperation(String[] inputStr) throws IllegalArgumentException {
     try {
-      String operation = input[0].toUpperCase();
+      String operation = inputStr[0].toUpperCase();
       String key = "";
       int j = 0;
-      for(int i = 1; i < input.length; i++) {
-        if(Objects.equals(input[i], ",")) {
+      for(int i = 1; i < inputStr.length; i++) {
+        if(Objects.equals(inputStr[i], ",")) {
           j = i;
           break;
         }
-        else key = key + input[i] + " ";
+        else key = key + inputStr[i] + " ";
       }
       key = key.trim();
 
       switch (operation) {
         case "PUT": {
           String value = "";
-          for(int i = j+1; i < input.length; i++) value = value + " " + input[i].trim();
+          for(int i = j+1; i < inputStr.length; i++) value = value + " " + inputStr[i].trim();
           value = value.trim();
           return addToKeyValues(key, value);
         }
@@ -139,7 +177,14 @@ public class ServerUDP {
 
   }
 
-
+  /**
+   * Method to add key-value pair in the properties file.
+   *
+   * @param key   the key to be added.
+   * @param value the corresponding value associated to that key.
+   * @return Success Message
+   * @throws Exception error during execution
+   */
   static String addToKeyValues(String key, String value) throws Exception {
     properties.setProperty(key, value);
     properties.store(write, null);
@@ -148,6 +193,13 @@ public class ServerUDP {
   }
 
 
+  /**
+   * Method to delete a key-value pair from properties file.
+   *
+   * @param key the key to be deleted
+   * @return success or key not found message
+   * @throws IOException if an error appears
+   */
   private static String deleteFromKeyValues(String key) throws IOException {
     String result = "";
     if(properties.containsKey(key)) {
@@ -161,6 +213,13 @@ public class ServerUDP {
     return result;
   }
 
+  /**
+   * Method to get the value associated with the provided key from the keyValues.
+   *
+   * @param key the key for which corresponding value need to be fetched.
+   * @return the value corresponding to the key or message if the key is not found
+   * @throws IOException error occur during the operation
+   */
 
   private static String getFromKeyValues(String key) throws IOException {
     String value = properties.getProperty(key);
