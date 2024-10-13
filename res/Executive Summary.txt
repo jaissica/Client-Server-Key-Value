@@ -1,0 +1,19 @@
+Name: Jaissica Hora
+
+Late Days Remaining: 4
+
+Overview:
+
+In this project we were supposed to implement the Paxos consensus algorithm to ensure agreement among a group of computers.
+To implement this we had to utilise roles such as "Proposers," "Acceptors," and "Learners" to collaboratively reach consensus on  values by overcoming the issues posted by protocols like Two-Phase Commit protocol.
+To complete this project it was essential to have a good understanding of  various concepts and phases of Paxos like prepare, accept, learn — how to address failures, and simulate components like clients and data stores. The project gave me a deep understanding of Paxos and its effectiveness in achieving reliable agreement on values and managing event sequencing, demonstrating its capability to achieve consensus in a distributed system despite the disruptions.
+
+
+Technical Impressions:
+
+In the assignment, I explored distributed systems and focused on getting the Paxos consensus algorithm to work. To implement this project I started with understanding more about fault tolerance and agreement concepts.
+Initially, it was tough to figure out how to make different roles like Proposers, Acceptors, and Learners work together,
+but as I understood more about them, I saw how agreement can happen in a distributed system that's spread out. Implementation of Paxos taught me how crucial it is to organize events carefully and deal with failures in any system. The tricky part for me was getting different roles to cooperate, in turn causing system failures, and then fixing everything showed me the tough balance between safety and availability.
+I got a deeper understanding on Paxos and how it focuses on being consistent and reliable through this project and got another opportunity to improve my programming skills in Java.
+This project gave me a better grasp of how complicated real world distributed systems can be and how one  has to think about so many possibilities of things which can go wrong and having mechanism to deal with them yet keeping the system running at the same time.
+
